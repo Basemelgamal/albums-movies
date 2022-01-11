@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RoleRequest;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Models\Role;
 
@@ -41,12 +42,7 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request)
     {
-        $role = new Role;
-        $role->name = $request->name;
-        $role->display_name = $request->display_name;
-        $role->description = $request->desc;
-        $role->save();
-
+        $role = Role::create($request->all());
         return redirect('admin/roles')->with(['alert'=>[
             'icon'=>'success',
             'title'=>'Done',
@@ -88,11 +84,8 @@ class RoleController extends Controller
      */
     public function update(RoleRequest $request, Role $role)
     {
-        $role = Role::find($role->id);
-        $role->name = $request->name;
-        $role->display_name = $request->display_name;
-        $role->description = $request->desc;
-        $role->save();
+        $role->update($request->all());
+
 
         return redirect('admin/roles')->with(['alert'=>[
             'icon'=>'success',

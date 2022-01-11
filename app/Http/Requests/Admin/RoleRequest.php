@@ -27,18 +27,19 @@ class RoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required|max:200',
+            'name'          => 'required|max:200|unique:roles',
             'display_name'  => 'required|max:200',
-            'desc'          => 'required|max:500',
+            'description'   => 'required|max:500',
         ];
     }
 
     public function messages()
     {
         return [
-                'name.required' => 'Role name field is required.',
+                'name.required'         => 'Role name field is required.',
+                'name.unique'           => 'Role name is already exists.',
                 'display_name.required' => 'Role display name field is required.',
-                'desc.required' => 'Role description field is required.',
+                'desc.required'         => 'Role description field is required.',
         ];
     }
 

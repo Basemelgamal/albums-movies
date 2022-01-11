@@ -61,7 +61,7 @@
                                                 <label class="control-label">Description</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" name="desc" placeholder="Ex. User is allowed to manage and edit other users " value="{{ old('desc') }}">
+                                                <input type="text" class="form-control" name="description" placeholder="Ex. User is allowed to manage and edit other users " value="{{ old('desc') }}">
                                                 @error('desc')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror

@@ -9,4 +9,6 @@ use Laratrust\Models\LaratrustRole;
 class Role extends LaratrustRole
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'display_name', 'description'];
 }
